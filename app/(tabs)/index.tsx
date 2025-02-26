@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { View, Text, TextInput, Button, FlatList, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, TextInput, Button, FlatList, TouchableOpacity, StyleSheet, Platform } from "react-native";
 
 export default function HomeScreen() {
   const [task, setTask] = useState("");
@@ -43,9 +43,32 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 20, paddingTop:50, backgroundColor: "#f8f8f8" },
-  heading: { fontSize: 20, fontWeight: "bold", marginBottom: 10 },
-  input: { borderWidth: 1, padding: 10, marginBottom: 10, borderRadius: 5 },
-  taskContainer: { flexDirection: "row", justifyContent: "space-between", padding: 10, backgroundColor: "#fff", marginVertical: 5, borderRadius: 5 },
-  deleteText: { color: "red", fontWeight: "bold" }
+  container: {
+    flex: 1,
+    padding: 20,
+    paddingTop: Platform.OS === 'ios' ? 50 : 20, // Adjust padding for iOS and Android
+    backgroundColor: "#f8f8f8",
+  },
+  heading: { fontSize: 24, fontWeight: "bold", marginBottom: 10, textAlign: "center" }, // Increased font size
+  input: { 
+    borderWidth: 1, 
+    padding: 10, 
+    marginBottom: 10, 
+    borderRadius: 5, 
+    backgroundColor: "#fff" // White background for input
+  },
+  taskContainer: { 
+    flexDirection: "row", 
+    justifyContent: "space-between", 
+    padding: 10, 
+    backgroundColor: "#fff", 
+    marginVertical: 5, 
+    borderRadius: 5,
+    shadowColor: '#000', // Adding shadow for better appearance
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    elevation: 3, // Shadow effect for Android
+  },
+  deleteText: { color: "red", fontWeight: "bold" },
 });

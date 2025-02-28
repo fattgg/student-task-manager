@@ -22,25 +22,24 @@ const initialTags: Tag[] = [
 const initialCollaborators: Collaborator[] = [
   { 
     id: '1', 
-    name: 'Alex Johnson', 
-    email: 'alex@example.com',
+    name: 'Agon Bajgora', 
+    email: 'agon.bajgora@umib.net',
     avatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80'
   },
   { 
     id: '2', 
-    name: 'Jamie Smith', 
-    email: 'jamie@example.com',
+    name: 'Arberi Krasniqi', 
+    email: 'arberi.krasniqi@umib.net',
     avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80'
   },
   { 
     id: '3', 
-    name: 'Taylor Wilson', 
-    email: 'taylor@example.com',
+    name: 'Berat Ujkani', 
+    email: 'berat.ujkani@umib.net',
     avatar: 'https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80'
   },
 ];
 
-// Generate sample tasks
 const generateSampleTasks = (): Task[] => {
   const now = new Date();
   
@@ -192,7 +191,6 @@ export const TaskProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setTasks(tasks.filter((task) => task.id !== id));
   };
 
-  // Category operations
   const addCategory = (category: Omit<Category, 'id'>) => {
     const newCategory: Category = {
       ...category,
@@ -211,7 +209,6 @@ export const TaskProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const deleteCategory = (id: string) => {
     setCategories(categories.filter((category) => category.id !== id));
-    // Also update tasks that had this category
     setTasks(
       tasks.map((task) =>
         task.categoryId === id ? { ...task, categoryId: '' } : task
@@ -219,7 +216,6 @@ export const TaskProvider: React.FC<{ children: React.ReactNode }> = ({ children
     );
   };
 
-  // Tag operations
   const addTag = (tag: Omit<Tag, 'id'>) => {
     const newTag: Tag = {
       ...tag,
@@ -230,7 +226,6 @@ export const TaskProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const deleteTag = (id: string) => {
     setTags(tags.filter((tag) => tag.id !== id));
-    // Also remove this tag from all tasks
     setTasks(
       tasks.map((task) => ({
         ...task,
@@ -239,7 +234,6 @@ export const TaskProvider: React.FC<{ children: React.ReactNode }> = ({ children
     );
   };
 
-  // Attachment operations
   const addAttachment = (taskId: string, attachment: Omit<Attachment, 'id'>) => {
     const newAttachment: Attachment = {
       ...attachment,
@@ -272,7 +266,6 @@ export const TaskProvider: React.FC<{ children: React.ReactNode }> = ({ children
     );
   };
 
-  // Collaborator operations
   const addCollaborator = (collaborator: Omit<Collaborator, 'id'>) => {
     const newCollaborator: Collaborator = {
       ...collaborator,
@@ -295,7 +288,6 @@ export const TaskProvider: React.FC<{ children: React.ReactNode }> = ({ children
     );
   };
 
-  // Query operations
   const getTasksByCategory = (categoryId: string) => {
     return tasks.filter((task) => task.categoryId === categoryId);
   };
@@ -345,7 +337,6 @@ export const TaskProvider: React.FC<{ children: React.ReactNode }> = ({ children
     return { completed, total: tasks.length };
   };
 
-  // Lookup operations
   const getCategoryById = (id: string) => {
     return categories.find((category) => category.id === id);
   };

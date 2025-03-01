@@ -3,9 +3,18 @@ import { View, Text, StyleSheet, ScrollView, Switch, TouchableOpacity } from 're
 import { useTheme } from '@/context/ThemeContext';
 import Header from '@/components/Header';
 import { Moon, Bell, User, CircleHelp as HelpCircle, LogOut, ChevronRight, Palette, Lock, FileText, Share2 } from 'lucide-react-native';
+import { router } from 'expo-router';
 
 export default function SettingsScreen() {
   const { colors, theme, toggleTheme } = useTheme();
+  
+  const navigateToScreen = (screen: string) => {
+    router.push(`/settings/${screen}`);
+  };
+  
+  const handleLogout = () => {
+    console.log('Logout pressed');
+  };
   
   const styles = StyleSheet.create({
     container: {
@@ -86,6 +95,7 @@ export default function SettingsScreen() {
     <View style={styles.container}>
       <Header title="Settings" />
       
+      
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
         <Text style={styles.sectionTitle}>Appearance</Text>
         <View style={styles.section}>
@@ -104,7 +114,10 @@ export default function SettingsScreen() {
             />
           </View>
           
-          <View style={[styles.row, styles.lastRow]}>
+          <TouchableOpacity 
+            style={[styles.row, styles.lastRow]}
+            onPress={() => navigateToScreen('theme')}
+          >
             <View style={styles.rowLeft}>
               <View style={[styles.iconContainer, { backgroundColor: colors.primary + '20' }]}>
                 <Palette size={20} color={colors.primary} />
@@ -112,12 +125,15 @@ export default function SettingsScreen() {
               <Text style={styles.rowText}>Theme Colors</Text>
             </View>
             <ChevronRight size={20} color={colors.gray} />
-          </View>
+          </TouchableOpacity>
         </View>
         
         <Text style={styles.sectionTitle}>Notifications</Text>
         <View style={styles.section}>
-          <View style={[styles.row, styles.lastRow]}>
+          <TouchableOpacity 
+            style={[styles.row, styles.lastRow]}
+            onPress={() => navigateToScreen('notifications')}
+          >
             <View style={styles.rowLeft}>
               <View style={[styles.iconContainer, { backgroundColor: colors.warning + '20' }]}>
                 <Bell size={20} color={colors.warning} />
@@ -125,12 +141,15 @@ export default function SettingsScreen() {
               <Text style={styles.rowText}>Notification Settings</Text>
             </View>
             <ChevronRight size={20} color={colors.gray} />
-          </View>
+          </TouchableOpacity>
         </View>
         
         <Text style={styles.sectionTitle}>Account</Text>
         <View style={styles.section}>
-          <View style={styles.row}>
+          <TouchableOpacity 
+            style={styles.row}
+            onPress={() => navigateToScreen('profile')}
+          >
             <View style={styles.rowLeft}>
               <View style={[styles.iconContainer, { backgroundColor: colors.secondary + '20' }]}>
                 <User size={20} color={colors.secondary} />
@@ -138,9 +157,12 @@ export default function SettingsScreen() {
               <Text style={styles.rowText}>Profile</Text>
             </View>
             <ChevronRight size={20} color={colors.gray} />
-          </View>
+          </TouchableOpacity>
           
-          <View style={[styles.row]}>
+          <TouchableOpacity 
+            style={[styles.row]}
+            onPress={() => navigateToScreen('privacy')}
+          >
             <View style={styles.rowLeft}>
               <View style={[styles.iconContainer, { backgroundColor: colors.error + '20' }]}>
                 <Lock size={20} color={colors.error} />
@@ -148,9 +170,12 @@ export default function SettingsScreen() {
               <Text style={styles.rowText}>Privacy & Security</Text>
             </View>
             <ChevronRight size={20} color={colors.gray} />
-          </View>
+          </TouchableOpacity>
           
-          <View style={[styles.row, styles.lastRow]}>
+          <TouchableOpacity 
+            style={[styles.row, styles.lastRow]}
+            onPress={() => navigateToScreen('data-sync')}
+          >
             <View style={styles.rowLeft}>
               <View style={[styles.iconContainer, { backgroundColor: colors.success + '20' }]}>
                 <Share2 size={20} color={colors.success} />
@@ -158,12 +183,15 @@ export default function SettingsScreen() {
               <Text style={styles.rowText}>Data Sync</Text>
             </View>
             <ChevronRight size={20} color={colors.gray} />
-          </View>
+          </TouchableOpacity>
         </View>
         
         <Text style={styles.sectionTitle}>Support</Text>
         <View style={styles.section}>
-          <View style={styles.row}>
+          <TouchableOpacity 
+            style={styles.row}
+            onPress={() => navigateToScreen('help')}
+          >
             <View style={styles.rowLeft}>
               <View style={[styles.iconContainer, { backgroundColor: colors.primary + '20' }]}>
                 <HelpCircle size={20} color={colors.primary} />
@@ -171,9 +199,12 @@ export default function SettingsScreen() {
               <Text style={styles.rowText}>Help & Support</Text>
             </View>
             <ChevronRight size={20} color={colors.gray} />
-          </View>
+          </TouchableOpacity>
           
-          <View style={[styles.row, styles.lastRow]}>
+          <TouchableOpacity 
+            style={[styles.row, styles.lastRow]}
+            onPress={() => console.log('Terms & Privacy Policy')}
+          >
             <View style={styles.rowLeft}>
               <View style={[styles.iconContainer, { backgroundColor: colors.primary + '20' }]}>
                 <FileText size={20} color={colors.primary} />
@@ -181,10 +212,13 @@ export default function SettingsScreen() {
               <Text style={styles.rowText}>Terms & Privacy Policy</Text>
             </View>
             <ChevronRight size={20} color={colors.gray} />
-          </View>
+          </TouchableOpacity>
         </View>
         
-        <TouchableOpacity style={styles.logoutButton}>
+        <TouchableOpacity 
+          style={styles.logoutButton}
+          onPress={handleLogout}
+        >
           <LogOut size={20} color={colors.error} />
           <Text style={styles.logoutText}>Log Out</Text>
         </TouchableOpacity>

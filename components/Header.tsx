@@ -30,6 +30,7 @@ const Header: React.FC<HeaderProps> = ({
       justifyContent: 'space-between',
       alignItems: 'center',
       paddingHorizontal: 20,
+      paddingTop: 50,
       paddingVertical: 16,
       backgroundColor: colors.background,
     },

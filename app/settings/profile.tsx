@@ -25,6 +25,7 @@ export default function ProfileScreen() {
       flexDirection: 'row',
       alignItems: 'center',
       paddingHorizontal: 20,
+      paddingTop: 50,
       paddingVertical: 16,
       backgroundColor: colors.card,
     },

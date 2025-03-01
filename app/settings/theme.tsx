@@ -38,6 +38,7 @@ export default function ThemeSettingsScreen() {
     headerTitle: {
       fontSize: 20,
       fontWeight: 'bold',
+      paddingTop: 35,
       color: colors.text,
     },
     content: {

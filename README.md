@@ -1,50 +1,121 @@
-# Welcome to your Expo app 👋
+# Student Task Manager
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A comprehensive task management application built with Expo and React Native, designed specifically for students to manage their academic tasks, collaborate with peers, and stay organized.
 
-## Get started
+## Features
 
-1. Install dependencies
+### 📋 Task Management
+- Create, edit, and delete tasks
+- Set task priorities (Low, Medium, High)
+- Track task progress
+- Set due dates and reminders
+- Categorize tasks by subject
+- Add tags for better organization
+- Track task completion status
 
+### 👥 Collaboration
+- Share tasks with classmates
+- Add collaborators to tasks
+- View shared tasks in a dedicated tab
+- Real-time collaboration updates
+- Private collaboration settings
+
+### 📅 Calendar Integration
+- View tasks in a calendar format
+- Daily, weekly view options
+- Due date tracking
+- Overdue task notifications
+- Upcoming task reminders
+
+### 📊 Dashboard
+- Overview of all tasks
+- Progress tracking
+- Category-wise task distribution
+- Priority-based task sorting
+- Quick access to important tasks
+
+### ⚙️ Settings & Customization
+- Dark/Light theme support
+- Notification preferences
+- Privacy settings
+- Profile management
+- Data sync options
+
+## Technical Stack
+
+- **Framework**: Expo SDK 52.0.30
+- **Navigation**: Expo Router 4.0.17
+- **UI Components**: React Native core components
+- **Icons**: Lucide React Native
+- **State Management**: React Context API
+- **Date Handling**: React Native Calendar Strip
+
+## Project Structure
+
+```
+app/
+├── _layout.tsx                 # Root layout configuration
+├── +not-found.tsx             # 404 error page
+├── (tabs)/                    # Tab-based navigation
+│   ├── _layout.tsx            # Tab navigation configuration
+│   ├── index.tsx              # Home dashboard
+│   ├── tasks.tsx              # Task management
+│   ├── calendar.tsx           # Calendar view
+│   ├── collaborate.tsx        # Collaboration features
+│   └── settings.tsx           # App settings
+├── settings/                  # Settings screens
+│   ├── profile.tsx            # User profile
+│   ├── notifications.tsx      # Notification settings
+│   ├── theme.tsx             # Theme customization
+│   ├── privacy.tsx           # Privacy settings
+│   ├── help.tsx              # Help & support
+│   └── data-sync.tsx         # Data synchronization
+├── task/                     # Task-related screens
+│   ├── [id].tsx              # Task details
+│   ├── edit/[id].tsx         # Task editing
+│   └── new.tsx               # New task creation
+components/                   # Reusable components
+├── Header.tsx                # App header
+├── TaskCard.tsx              # Task display card
+└── ProgressBar.tsx           # Progress indicator
+context/                     # Application context
+├── TaskContext.tsx           # Task management state
+└── ThemeContext.tsx         # Theme management
+types/                      # TypeScript definitions
+└── task.ts                  # Task-related types
+```
+
+## Getting Started
+
+1. Clone the repository
+2. Install dependencies:
    ```bash
    npm install
    ```
-
-2. Start the app
-
+3. Start the development server:
    ```bash
-    npx expo start
+   npm run dev
    ```
 
-In the output, you'll find options to open the app in a
+## Development
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+- Web platform is the primary target
+- Uses Expo managed workflow
+- Follows React Native best practices
+- Implements responsive design
+- Handles cross-platform compatibility
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## Contributing
 
-## Get a fresh project
+1. Fork the repository
+2. Create your feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a new Pull Request
 
-When you're ready, run:
+## Acknowledgments
 
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- Built with Expo and React Native
+- Uses Unsplash for stock images
+- Icons provided by Lucide React Native
+- Calendar integration with React Native Calendar Strip
